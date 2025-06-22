@@ -1,6 +1,6 @@
 # 🔐 PaasZK – Secure Vault Sync CLI
 
-![Project Logo](https://raw.githubusercontent.com/pedrorodrigues1997/PaaSZK/main/img/logo.png)
+![Project Logo](https://raw.githubusercontent.com/pedrorodrigues1997/PaaSZK/main/logo.png)
 
 **PaasZK** is a lightweight, CLI-based encrypted vault system that lets you safely store and sync confidential files across cloud providers. It supports encrypted file storage, cloud synchronization, and backend storage abstraction — all under your control.
 
