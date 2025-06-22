@@ -1,7 +1,7 @@
 [project]
 name = "paaszk"
 urls = { "Homepage" = "https://github.com/pedrorodrigues1997/PaaSZK", "Bug Tracker" = "https://github.com/pedrorodrigues1997/PaaSZK/issues" }
-version = "0.1.4"
+version = "0.1.5"
 description = "A zero-knowledge encrypted vault CLI tool."
 authors = [{ name="Pedro Rodrigues", email="pedrex1997@gmail.com" }]
 readme = "README.md"

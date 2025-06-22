@@ -135,7 +135,9 @@ def handle_pull(storage_name:str):
         pull_from_dropbox(storage_conf, cache_path)
     elif storage_type == "google_drive":
         pull_from_google_drive(storage_conf, cache_path)
-        
+    elif storage_type == "local":
+        print("Files will be fectehd from .vault_cache")
+          
 
     else:
         print(f"[!] Unsupported storage type: {storage_type}")
@@ -211,7 +213,7 @@ def handle_push(file_path: Path, recursive: bool, storage_name: str):
         return
 
     file_path = file_path.resolve()
-
+    encrypted_files = []
     if file_path.is_dir():
         if not recursive:
             print(f"'{file_path}' is a directory. Use --recursive to encrypt its contents.")
@@ -220,11 +222,13 @@ def handle_push(file_path: Path, recursive: bool, storage_name: str):
         for item in file_path.rglob("*") if recursive else file_path.iterdir():
             if item.is_file() and not should_exclude(item):
                 encrypt_file_with_master_key(item, cache_path, master_key)
+                encrypted_files.append(item)
             else:
                 print(f"[!] Skipped: {item}")
     elif file_path.is_file():
         print(f"[i] Encrypting file: {file_path}")
         encrypt_file_with_master_key(file_path, cache_path, master_key)
+        encrypted_files.append(item)
     else:
         print(f"[!] Invalid path: {file_path}")
         return
@@ -237,6 +241,14 @@ def handle_push(file_path: Path, recursive: bool, storage_name: str):
         push_to_dropbox(storage_conf, cache_path)
     elif storage_type == "google_drive":
         push_to_google_drive(storage_conf, cache_path)
+    elif storage_type == "local":
+        print("[i] Using local backend — deleting original plaintext files...")
+        for f in encrypted_files:
+            try:
+                f.unlink()
+                print(f"[+] Deleted: {f}")
+            except Exception as e:
+                print(f"[!] Failed to delete {f}: {e}")   
 
     else:
         print(f"[!] Unsupported storage type: {storage_type}")

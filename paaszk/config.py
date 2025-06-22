@@ -114,6 +114,7 @@ def add_storage_backend(name: str, master_key: bytes):
     print("1. S3-compatible (e.g. AWS S3, Backblaze B2)")
     print("2. Dropbox")
     print("3. Google Drive")
+    print("4. Local Folder")
 
     choice = input("Enter choice number: ").strip()
 
@@ -166,7 +167,17 @@ def add_storage_backend(name: str, master_key: bytes):
             new_storage_conf["token_path"] = token_path
 
         if credentials_path:
-            new_storage_conf["credentials_path"] = credentials_path    
+            new_storage_conf["credentials_path"] = credentials_path   
+
+    elif choice == "4":
+        storage_type = "local"
+        folder_path = input("Enter full path to the local folder (e.g., /home/user/backups or C:\\\\Users\\\\User\\\\Backups): ").strip()
+
+        new_storage_conf = {
+            "type": storage_type,
+            "folder_path": folder_path,
+        }
+         
 
     else:
         print("Invalid choice, aborting.")
