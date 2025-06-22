@@ -1,6 +1,6 @@
 [project]
 name = "paaszk"
-version = "0.1.1"
+version = "0.1.2"
 description = "A zero-knowledge encrypted vault CLI tool."
 authors = [{ name="Pedro Rodrigues", email="pedrex1997@gmail.com" }]
 readme = "README.md"
