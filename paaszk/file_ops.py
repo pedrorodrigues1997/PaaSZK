@@ -1,6 +1,5 @@
 import os
 import json
-import uuid
 import time
 import struct
 from pathlib import Path

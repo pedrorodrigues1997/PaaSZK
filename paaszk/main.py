@@ -1,10 +1,6 @@
 import os
 import argparse
-import yaml
 import getpass
-from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
-from cryptography.hazmat.primitives import padding
-from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from collections import defaultdict
 import subprocess
@@ -21,8 +17,6 @@ from paaszk.crypto import (
     decrypt_master_key,
     save_encrypted_master_key,
     load_master_key,
-    derive_shared_key_argon2,
-    encrypt_shared_key_for_user,
     VAULT_KEY_FILENAME,
     HIDDEN_VAULT_DIR
 )
